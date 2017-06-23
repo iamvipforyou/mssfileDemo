@@ -6,11 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/14
- * Time: 15:42
- */
+
 
 public abstract class BaseAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     protected Context mContext;

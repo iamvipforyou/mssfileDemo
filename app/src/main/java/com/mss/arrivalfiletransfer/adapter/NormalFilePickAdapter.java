@@ -16,11 +16,7 @@ import com.mss.arrivalfiletransfer.filter.entity.NormalFile;
 
 import java.util.ArrayList;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/26
- * Time: 10:23
- */
+
 
 public class NormalFilePickAdapter extends BaseAdapter<NormalFile, NormalFilePickAdapter.NormalFilePickViewHolder> {
     private int mMaxNumber;

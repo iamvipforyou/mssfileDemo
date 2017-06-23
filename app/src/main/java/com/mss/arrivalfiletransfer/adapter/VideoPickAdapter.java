@@ -32,11 +32,7 @@ import java.util.Locale;
 import static android.os.Environment.DIRECTORY_DCIM;
 import static com.mss.arrivalfiletransfer.Utils.Constant.REQUEST_CODE_TAKE_VIDEO;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/21
- * Time: 14:13
- */
+
 
 public class VideoPickAdapter extends BaseAdapter<VideoFile, VideoPickAdapter.VideoPickViewHolder> {
     private boolean isNeedCamera;

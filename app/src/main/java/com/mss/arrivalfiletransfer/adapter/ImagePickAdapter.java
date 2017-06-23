@@ -33,11 +33,6 @@ import static android.os.Environment.DIRECTORY_DCIM;
 import static com.mss.arrivalfiletransfer.activity.ImageBrowserActivity.IMAGE_BROWSER_INIT_INDEX;
 import static com.mss.arrivalfiletransfer.activity.ImageBrowserActivity.IMAGE_BROWSER_SELECTED_LIST;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/13
- * Time: 16:07
- */
 
 public class ImagePickAdapter extends BaseAdapter<ImageFile, ImagePickAdapter.ImagePickViewHolder> {
 
@@ -86,7 +81,7 @@ public class ImagePickAdapter extends BaseAdapter<ImageFile, ImagePickAdapter.Im
 
                     ContentValues contentValues = new ContentValues(1);
                     contentValues.put(MediaStore.Images.Media.DATA, mImagePath);
-                    Uri uri = mContext.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+                    Uri uri = mContext.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
 
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                     ((Activity) mContext).startActivityForResult(intent, Constant.REQUEST_CODE_TAKE_IMAGE);

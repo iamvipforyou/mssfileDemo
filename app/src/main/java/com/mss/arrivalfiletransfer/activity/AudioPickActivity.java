@@ -25,11 +25,7 @@ import com.mss.arrivalfiletransfer.filter.entity.Directory;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/21
- * Time: 17:31
- */
+
 
 public class AudioPickActivity extends BaseActivity  {
     public static final String IS_NEED_RECORDER = "IsNeedRecorder";

@@ -20,8 +20,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.mss.arrivalfiletransfer.activity.AudioPickActivity.IS_NEED_RECORDER;
-import static com.mss.arrivalfiletransfer.activity.ImagePickActivity.IS_NEED_CAMERA;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,32 +55,19 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_images:
-                Intent intent1 = new Intent(this, ImagePickActivity.class);
-                intent1.putExtra(IS_NEED_CAMERA, true);
-                intent1.putExtra(Constant.MAX_NUMBER, 9);
-                startActivityForResult(intent1, Constant.REQUEST_CODE_PICK_IMAGE);
+
 
                 break;
             case R.id.btn_audio:
-                Intent intent3 = new Intent(this, AudioPickActivity.class);
-                intent3.putExtra(IS_NEED_RECORDER, true);
-                intent3.putExtra(Constant.MAX_NUMBER, 9);
-                startActivityForResult(intent3, Constant.REQUEST_CODE_PICK_AUDIO);
+
 
                 break;
             case R.id.btn_video:
-                Intent intent2 = new Intent(this, VideoPickActivity.class);
-                intent2.putExtra(IS_NEED_CAMERA, true);
-                intent2.putExtra(Constant.MAX_NUMBER, 9);
-                startActivityForResult(intent2, Constant.REQUEST_CODE_PICK_VIDEO);
+
 
                 break;
             case R.id.btn_file:
-                Intent intent4 = new Intent(this, NormalFilePickActivity.class);
-                intent4.putExtra(Constant.MAX_NUMBER, 9);
-                intent4.putExtra(NormalFilePickActivity.SUFFIX,
-                        new String[]{"xlsx", "xls", "doc", "dOcX", "ppt", ".pptx", "pdf"});
-                startActivityForResult(intent4, Constant.REQUEST_CODE_PICK_FILE);
+
 
                 break;
 

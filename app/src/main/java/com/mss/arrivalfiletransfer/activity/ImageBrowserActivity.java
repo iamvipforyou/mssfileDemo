@@ -29,12 +29,6 @@ import java.util.List;
 import static com.mss.arrivalfiletransfer.activity.ImagePickActivity.DEFAULT_MAX_NUMBER;
 
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/20
- * Time: 14:37
- */
-
 public class ImageBrowserActivity extends BaseActivity {
     public static final String IMAGE_BROWSER_INIT_INDEX = "ImageBrowserInitIndex";
     public static final String IMAGE_BROWSER_SELECTED_LIST = "ImageBrowserSelectedList";
@@ -42,7 +36,7 @@ public class ImageBrowserActivity extends BaseActivity {
     private int mCurrentNumber = 0;
     private int initIndex = 0;
     private int mCurrentIndex = 0;
-
+    public static final int DEFAULT_MAX_NUMBER = 9;
     private ViewPager mViewPager;
     private Toolbar mTbImagePick;
     private ArrayList<ImageFile> mList = new ArrayList<>();

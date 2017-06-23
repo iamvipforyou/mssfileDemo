@@ -18,11 +18,7 @@ import com.mss.arrivalfiletransfer.filter.entity.AudioFile;
 
 import java.util.ArrayList;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/25
- * Time: 10:57
- */
+
 
 public class AudioPickAdapter extends BaseAdapter<AudioFile, AudioPickAdapter.AudioPickViewHolder> {
     private int mMaxNumber;

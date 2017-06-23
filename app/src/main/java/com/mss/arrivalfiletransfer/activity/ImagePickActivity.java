@@ -26,11 +26,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/12
- * Time: 16:41
- */
+
 
 public class ImagePickActivity extends BaseActivity {
     public static final String IS_NEED_CAMERA = "IsNeedCamera";

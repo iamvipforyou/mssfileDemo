@@ -141,12 +141,12 @@ public class PicturesFragment extends Fragment implements upDateBrowseImage {
                     list.addAll(directory.getFiles());
                 }
 
-                for (ImageFile file : mSelectedList) {
+               /* for (ImageFile file : mSelectedList) {
                     int index = list.indexOf(file);
                     if (index != -1) {
                         list.get(index).setSelected(true);
                     }
-                }
+                }*/
 
                 for (ImageFile file : mAdapter.getDataSet()) {
                     int index = list.indexOf(file);

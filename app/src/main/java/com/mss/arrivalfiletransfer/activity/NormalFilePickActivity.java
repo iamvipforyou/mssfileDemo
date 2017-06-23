@@ -26,11 +26,7 @@ import com.mss.arrivalfiletransfer.filter.entity.NormalFile;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Vincent Woo
- * Date: 2016/10/26
- * Time: 10:14
- */
+
 
 public class NormalFilePickActivity extends BaseActivity {
     public static final int DEFAULT_MAX_NUMBER = 9;
