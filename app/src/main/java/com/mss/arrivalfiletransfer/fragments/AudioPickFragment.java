@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mss.arrivalfiletransfer.Utils.Constant;
 import com.mss.arrivalfiletransfer.Utils.DividerListItemDecoration;
@@ -155,8 +156,9 @@ public class AudioPickFragment extends Fragment {
             Session.getUpdatedSelectedDataList();
             return true;
         } else if (id == R.id.action_record) {
-            Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-            startActivityForResult(intent, Constant.REQUEST_CODE_TAKE_AUDIO);
+           /* Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+            startActivityForResult(intent, Constant.REQUEST_CODE_TAKE_AUDIO);*/
+            Toast.makeText(getActivity(), "Coming Soon..", Toast.LENGTH_SHORT).show();
             return true;
         }
 

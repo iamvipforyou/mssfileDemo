@@ -179,7 +179,7 @@ public class ImageBrowserActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_image_pick, menu);
+        getMenuInflater().inflate(R.menu.menu_browse_pick, menu);
         return true;
     }
 

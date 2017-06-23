@@ -1,6 +1,7 @@
 package com.mss.arrivalfiletransfer.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -35,6 +36,7 @@ import com.mss.arrivalfiletransfer.fragments.DocumentFragment;
 import com.mss.arrivalfiletransfer.fragments.PicturesFragment;
 import com.mss.arrivalfiletransfer.fragments.VideoFragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +96,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mSelectedList.remove(file);
                     mCurrentNumber--;
                 }
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "", mtoolbar);
                 // mTbImagePick.setTitle();
             }
         });
@@ -111,7 +113,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mSelectedVideoList.remove(vfile);
                     mCurrentNumber--;
                 }
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "", mtoolbar);
             }
         });
         /////////////////////Audio Adapter ///////////////////////////
@@ -127,7 +129,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mCurrentNumber--;
                 }
 
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "", mtoolbar);
             }
 
 
@@ -145,7 +147,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mSelectedDocumentList.remove(file);
                     mCurrentNumber--;
                 }
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "", mtoolbar);
             }
         });
 
@@ -186,20 +188,52 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
 
         int size = mSelectedAudioList.size() + mSelectedDocumentList.size() + mSelectedVideoList.size() + mSelectedList.size();
 
+        if (size > 0) {
+            ArrayList<Uri> allList = new ArrayList<Uri>();
+            for (int images = 0; images < mSelectedList.size(); images++) {
+                ImageFile imageFile = mSelectedList.get(images);
+                if (imageFile.isSelected()) {
+                    allList.add(Uri.fromFile(new File(imageFile.getPath())));
+                }
+            }
 
-        Toast.makeText(this, "" + size + " Files", Toast.LENGTH_SHORT).show();
+            for (int videos = 0; videos < mSelectedVideoList.size(); videos++) {
+                VideoFile videoFile = mSelectedVideoList.get(videos);
+                if (videoFile.isSelected()) {
+                    allList.add(Uri.fromFile(new File(videoFile.getPath())));
+                }
+            }
+            for (int audios = 0; audios < mSelectedAudioList.size(); audios++) {
+                AudioFile audioFile = mSelectedAudioList.get(audios);
+                if (audioFile.isSelected()) {
+                    allList.add(Uri.fromFile(new File(audioFile.getPath())));
+                }
+            }
+            for (int documents = 0; documents < mSelectedDocumentList.size(); documents++) {
+                NormalFile normalFile = mSelectedDocumentList.get(documents);
+                if (normalFile.isSelected()) {
+                    allList.add(Uri.fromFile(new File(normalFile.getPath())));
+                }
+            }
 
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+            shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, allList);
+            shareIntent.setType("*/*");
+            startActivity(Intent.createChooser(shareIntent, "Share images to.."));
 
+        }else{
+
+            Toast.makeText(this, "No File Selected !!", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     @Override
     public void addToSelectedList(ArrayList<ImageFile> list) {
 
-
         for (int i = 0; i < list.size(); i++) {
-
             ImageFile file = list.get(i);
-
             if (file.isSelected()) {
                 if (!mSelectedList.contains(file)) {
                     mSelectedList.add(file);
@@ -211,12 +245,8 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mCurrentNumber--;
                 }
             }
-
-
         }
-
-        Util.setClassTitle(AllFilesPicker.this, mCurrentNumber+"" , mtoolbar);
-
+        Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "", mtoolbar);
     }
 
     static class Adapter extends FragmentPagerAdapter {

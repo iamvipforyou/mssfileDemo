@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,13 +20,18 @@
             </intent-filter>
         </activity>
 
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activity.AllUserActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AllFilesPicker"
             android:screenOrientation="portrait"
-             android:theme="@style/NoActionBar"/>
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".activity.ImagePickActivity"
             android:screenOrientation="portrait"
