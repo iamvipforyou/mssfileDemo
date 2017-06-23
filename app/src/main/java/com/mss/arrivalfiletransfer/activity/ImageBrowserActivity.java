@@ -93,11 +93,14 @@ public class ImageBrowserActivity extends BaseActivity {
                     mCurrentNumber--;
                     v.setSelected(false);
                     mSelectedFiles.remove(mList.get(mCurrentIndex));
+                    Session.getAfterSelectedList(mList);
                 } else {
                     mList.get(mCurrentIndex).setSelected(true);
                     mCurrentNumber++;
                     v.setSelected(true);
                     mSelectedFiles.add(mList.get(mCurrentIndex));
+                    //////////////////////////////
+                    Session.getAfterSelectedList(mList);
                 }
 
                 mTbImagePick.setTitle(mCurrentNumber + "/" + mMaxNumber);

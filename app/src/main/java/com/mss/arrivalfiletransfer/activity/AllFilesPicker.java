@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.mss.arrivalfiletransfer.Interface.AfterBrowseAddToSelectedList;
 import com.mss.arrivalfiletransfer.Interface.updateSelectedDataList;
 import com.mss.arrivalfiletransfer.Utils.Constant;
 import com.mss.arrivalfiletransfer.R;
@@ -41,7 +42,7 @@ import java.util.List;
  * Created by ${GC} on 19/6/17.
  */
 
-public class AllFilesPicker extends AppCompatActivity implements updateSelectedDataList {
+public class AllFilesPicker extends AppCompatActivity implements updateSelectedDataList, AfterBrowseAddToSelectedList {
 
     public Toolbar mtoolbar;
     public static final String IS_NEED_CAMERA = "IsNeedCamera";
@@ -65,6 +66,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
         setSupportActionBar(mtoolbar);
 
         Session.setUpdatedSelectedDataList(this);
+        Session.setAfterBrowseSelectedList(this);
         initAdapters();
 
 
@@ -92,7 +94,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mSelectedList.remove(file);
                     mCurrentNumber--;
                 }
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "/" + mMaxNumber, mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
                 // mTbImagePick.setTitle();
             }
         });
@@ -109,7 +111,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mSelectedVideoList.remove(vfile);
                     mCurrentNumber--;
                 }
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "/" + mMaxNumber, mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
             }
         });
         /////////////////////Audio Adapter ///////////////////////////
@@ -125,7 +127,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mCurrentNumber--;
                 }
 
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "/" + mMaxNumber, mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
             }
 
 
@@ -143,7 +145,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     mSelectedDocumentList.remove(file);
                     mCurrentNumber--;
                 }
-                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber + "/" + mMaxNumber, mtoolbar);
+                Util.setClassTitle(AllFilesPicker.this, mCurrentNumber +"", mtoolbar);
             }
         });
 
@@ -187,6 +189,33 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
 
         Toast.makeText(this, "" + size + " Files", Toast.LENGTH_SHORT).show();
 
+
+    }
+
+    @Override
+    public void addToSelectedList(ArrayList<ImageFile> list) {
+
+
+        for (int i = 0; i < list.size(); i++) {
+
+            ImageFile file = list.get(i);
+
+            if (file.isSelected()) {
+                if (!mSelectedList.contains(file)) {
+                    mSelectedList.add(file);
+                    mCurrentNumber++;
+                }
+            } else {
+                if (mSelectedList.contains(file)) {
+                    mSelectedList.remove(file);
+                    mCurrentNumber--;
+                }
+            }
+
+
+        }
+
+        Util.setClassTitle(AllFilesPicker.this, mCurrentNumber+"" , mtoolbar);
 
     }
 
@@ -268,6 +297,7 @@ public class AllFilesPicker extends AppCompatActivity implements updateSelectedD
                     //   txtName.setText(builder.toString());
                 }
                 break;
+
         }
 
 

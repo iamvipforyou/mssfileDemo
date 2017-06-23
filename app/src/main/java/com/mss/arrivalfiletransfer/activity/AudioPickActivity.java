@@ -31,7 +31,7 @@ import java.util.List;
  * Time: 17:31
  */
 
-public class AudioPickActivity extends BaseActivity {
+public class AudioPickActivity extends BaseActivity  {
     public static final String IS_NEED_RECORDER = "IsNeedRecorder";
 
     public static final int DEFAULT_MAX_NUMBER = 9;
